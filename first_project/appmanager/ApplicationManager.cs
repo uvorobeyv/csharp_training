@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 using System;
 
 namespace WebAddressBookTests
@@ -14,9 +15,19 @@ namespace WebAddressBookTests
 
         public ApplicationManager()
         {
-            loginHelper = new LoginHelper(driver);
-            navigator = new NavigatorHelper(driver, baseURL);
-            group = new GroupHelper(driver);
+            driver = new FirefoxDriver();
+            baseURL = "http://localhost/addressbook/index.php";
+            loginHelper = new LoginHelper(this);
+            navigator = new NavigatorHelper(this, baseURL);
+            group = new GroupHelper(this);
+        }
+
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
         }
 
         public void Stop()
@@ -55,6 +66,6 @@ namespace WebAddressBookTests
             }
         }
 
-
+        
     }
 }

@@ -19,7 +19,7 @@ namespace WebAddressBookTests
         public void SetupTest()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook/";
+            baseURL = "http://localhost/addressbook/index.php";
         }
 
         [TearDown]
